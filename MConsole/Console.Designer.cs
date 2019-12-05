@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Console_Text = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.Cname = new System.Windows.Forms.Label();
-            this.Console_Text = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,6 +43,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 377);
             this.panel1.TabIndex = 0;
+            // 
+            // Console_Text
+            // 
+            this.Console_Text.BackColor = System.Drawing.Color.DimGray;
+            this.Console_Text.Location = new System.Drawing.Point(3, 3);
+            this.Console_Text.Name = "Console_Text";
+            this.Console_Text.ReadOnly = true;
+            this.Console_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.Console_Text.Size = new System.Drawing.Size(794, 371);
+            this.Console_Text.TabIndex = 0;
+            this.Console_Text.TabStop = false;
+            this.Console_Text.Text = "";
+            this.Console_Text.TextChanged += new System.EventHandler(this.Console_Text_TextChanged);
             // 
             // button1
             // 
@@ -65,18 +78,6 @@
             this.Cname.Size = new System.Drawing.Size(70, 20);
             this.Cname.TabIndex = 2;
             this.Cname.Text = "Console";
-            // 
-            // Console_Text
-            // 
-            this.Console_Text.BackColor = System.Drawing.Color.DimGray;
-            this.Console_Text.Location = new System.Drawing.Point(3, 3);
-            this.Console_Text.Name = "Console_Text";
-            this.Console_Text.ReadOnly = true;
-            this.Console_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.Console_Text.Size = new System.Drawing.Size(794, 371);
-            this.Console_Text.TabIndex = 0;
-            this.Console_Text.TabStop = false;
-            this.Console_Text.Text = "";
             // 
             // Console
             // 

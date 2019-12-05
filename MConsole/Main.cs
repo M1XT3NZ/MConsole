@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using From;
 using System.IO;
-
+using System.Threading.Tasks;
 namespace SConsole
 {
     public class MConsole
@@ -15,20 +15,47 @@ namespace SConsole
         From.Console cc = new From.Console();
         static string dtime = DateTime.Now.ToString("HH:mm dd MM yyyy").Replace(":", "_").Replace(" ", "_").Replace("/","_");
         static string txt = dtime + "_log.txt";
-        StreamWriter sw = new StreamWriter(txt,true);
+        StreamWriter sw = new StreamWriter(txt, true);
+        public bool testmessage = false;
         public MConsole()
-        {
-            
+        {         
         }
         public bool writetofile = false;
         public void Init()
         {
             cc.Show();
+            if (testmessage)
+            {
+                cc.Console_Text.AppendText("This is a Test Message\n");
+            }
         }
         public void Init(string name)
         {                    
             cc.Show();
             cc.Cname.Text = name;
+            Task.Run(text);
+
+        }
+        void text()
+        {
+            bool check = false;
+            while (true)
+            {
+                if (testmessage)
+                {
+
+                    cc.Console_Text.Invoke(new Action(() => cc.Console_Text.AppendText("This is a Test Message")));
+                    check = true;
+                }
+                if(check)
+                {
+                    
+                   break;
+                    
+
+                }
+                Thread.Sleep(600);
+            }
         }
         public void DEBUGMSG(string dbgmsg)
         {
@@ -63,7 +90,6 @@ namespace SConsole
         public void LOG(string logmsg,Color color)
         {
             cc.Console_Text.SelectionColor = color;
-            //cc.Console_Text.ForeColor = color;
             cc.Console_Text.AppendText(logmsg + Environment.NewLine);
             if (writetofile)
             {
@@ -71,5 +97,8 @@ namespace SConsole
                 sw.Flush();
             }
         }
+
+
+
     }
 }

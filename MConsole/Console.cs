@@ -44,5 +44,11 @@ namespace From
         {
             Application.Exit();
         }
+
+        private void Console_Text_TextChanged(object sender, EventArgs e)
+        {
+            Console_Text.SelectionStart = Console_Text.Text.Length;
+            Console_Text.ScrollToCaret();
+        }
     }
 }
